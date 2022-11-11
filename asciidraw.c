@@ -4,51 +4,53 @@
 char drawIcon = '*';
 char newIcon;
 
-char input[20];
+char grid[1000][1000];
+
+char input[200];
+char workingInput[200];
 
 int check = 1;
 
 int main(){
-    fgets(input, 20, stdin);
-    printf("the string is: %s", input);
+    fgets(input, 200, stdin);
+    sscanf(input, "%s", workingInput);
 
     while(check >= 1){
-        if(strcmp(input, "GRID\n") == 0){
+        fgets(input, 20, stdin);
+        sscanf(input, "%s", workingInput);
+
+        if(strcmp(workingInput, "GRID") == 0){
             printf("You selected grid\n");
-            fgets(input, 20, stdin);
         }
 
-        if(strcmp(input, "DISPLAY\n") == 0){
+        if(strcmp(workingInput, "DISPLAY") == 0){
             printf("You selected display\n");
-            fgets(input, 20, stdin);
         }
 
-        if(strcmp(input, "CHAR\n") == 0){
-            printf("Enter your new icon: ");
-            fgets(newIcon, 1, stdin);
-            drawIcon = newIcon;
-            printf("Your new icon is :%c", drawIcon);
+        if(strcmp(workingInput, "CHAR") == 0){
+            sscanf(input, "%*s %c", &drawIcon);
+            printf("%c", drawIcon);
         }
 
-        if(strcmp(input, "RECTANGLE\n") == 0){
-
+        if(strcmp(workingInput, "RECTANGLE") == 0){
+            printf("You selected rectangle\n");
         }
 
-        if(strcmp(input, "LINE\n") == 0){
-        
+        if(strcmp(workingInput, "LINE") == 0){
+            printf("You selected line\n");
         }
 
-        if(strcmp(input, "CIRCLE\n") == 0){
-
+        if(strcmp(workingInput, "CIRCLE") == 0){
+            printf("You selected circle\n");
         }
 
-        if(strcmp(input, "END\n") == 0){
-
+        if(strcmp(workingInput, "END") == 0){
+            printf("You selected circle\n");
+            check = 0;
         }
 
         else{
             printf("Error, did not understand %s", input);
-            fgets(input, 20, stdin);
         }
     }
 }
